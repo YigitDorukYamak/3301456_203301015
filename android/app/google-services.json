@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1094356714831",
+    "project_id": "bloguygulamasi-3e332",
+    "storage_bucket": "bloguygulamasi-3e332.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094356714831:android:270bac5507ace428cf313a",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094356714831-017tdivfsdl6gi804tj67b5ajiob5se0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7mg1p_JCM7AhsQ5wu48PDeWhkd69oJQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094356714831-017tdivfsdl6gi804tj67b5ajiob5se0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,9 +1,15 @@
-import 'dart:ui';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/giri%C5%9F%20ekran%C4%B1/giri%C5%9F.dart';
 import 'package:flutter_application_1/rota/rota.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -14,21 +20,69 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       onGenerateRoute: routeGenerations.RouteGeneration,
       title: "Uygulama Çerçevesi",
-      home: AnaEkran(),
+      home: giris(),
     );
   }
 }
 
-class AnaEkran extends StatelessWidget {
+class AnaEkran extends StatefulWidget {
   const AnaEkran({Key? key}) : super(key: key);
 
+  @override
+  State<AnaEkran> createState() => _AnaEkranState();
+}
+
+class _AnaEkranState extends State<AnaEkran>
+    with SingleTickerProviderStateMixin {
   get child => null;
+  late AnimationController controller;
+  late Animation<Color?> animationrenk;
+
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      duration: const Duration(milliseconds: 2500),
+      vsync: this,
+    );
+
+    controller.addListener(() {
+      setState(() {});
+    });
+
+    controller.forward();
+    controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        controller.reverse().orCancel;
+      } else if (status == AnimationStatus.dismissed) {
+        controller.forward().orCancel;
+      }
+    });
+
+    animationrenk = ColorTween(
+      begin: Colors.black,
+      end: Colors.white,
+    ).animate(controller);
+  }
+
+  @override
+  dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Blog Uygulaması"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, "giris");
+            },
+            icon: Icon(Icons.account_box, color: animationrenk.value),
+          )
+        ],
       ),
       body: ListView(
         children: [
